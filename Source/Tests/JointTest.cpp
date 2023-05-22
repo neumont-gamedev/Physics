@@ -5,8 +5,8 @@
 
 #define CHAIN
 
-#define SPRING_STIFFNESS	200
-#define SPRING_LENGTH		100
+#define SPRING_STIFFNESS	100
+#define SPRING_LENGTH		2
 #define BODY_DAMPING		10
 #define CHAIN_SIZE			3
 
@@ -14,7 +14,7 @@ void JointTest::Initialize()
 {
 	Test::Initialize();
 
-	m_anchor = new Body(new CircleShape(20, { 1, 1, 1, 1 }), { 400, 100 }, { 0, 0 }, 0, Body::KINEMATIC);
+	m_anchor = new Body(new CircleShape(1, { 1, 1, 1, 1 }), { 0, 0 }, { 0, 0 }, 0, Body::KINEMATIC);
 	m_world->AddBody(m_anchor);
 
 #if defined(CHAIN)
@@ -22,8 +22,7 @@ void JointTest::Initialize()
 	// chain
 	for (int i = 0; i < CHAIN_SIZE; i++) 
 	{
-		auto body = new Body(new CircleShape(20, { 1, 1, 1, 1 }), { 400, 200 }, { 0, 0 }, 1, Body::DYNAMIC);
-		body->gravityScale = 150;
+		auto body = new Body(new CircleShape(0.5f, { 1, 1, 1, 1 }), { 0, 0 });
 		body->damping = BODY_DAMPING;
 		m_world->AddBody(body);
 
@@ -85,7 +84,7 @@ void JointTest::Initialize()
 void JointTest::Update()
 {
 	Test::Update();
-	m_anchor->position = m_input->GetMousePosition();
+	m_anchor->position = m_graphics->ScreenToWorld(m_input->GetMousePosition());
 }
 
 void JointTest::FixedUpdate()

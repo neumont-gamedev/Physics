@@ -3,7 +3,7 @@
 #include "Constraints/Joint.h"
 #include "Forces/ForceGenerator.h"
 
-glm::vec2 World::gravity{ 0, 9.8f };
+glm::vec2 World::gravity{ 0, -9.8f };
 
 World::~World()
 {

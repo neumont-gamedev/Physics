@@ -3,5 +3,6 @@
 
 void CircleShape::Draw(Graphics* graphics, const glm::vec2& position)
 {
-	graphics->DrawFilledCircle(position, (int)radius, color);
+	int r = graphics->WorldToPixels(radius);
+	graphics->DrawFilledCircle(graphics->WorldToScreen(position), r, color);
 }

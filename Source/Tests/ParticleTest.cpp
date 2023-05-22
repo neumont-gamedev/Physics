@@ -13,9 +13,11 @@ void ParticleTest::Update()
 
 	if (m_input->GetMouseButton(0))
 	{
-		glm::vec2 velocity = randomUnitCircle() * randomf(100, 200);
-		auto body = new Body(new CircleShape(randomf(5, 20), { randomf(), randomf(), randomf(), 1 }), m_input->GetMousePosition(), velocity);
+		glm::vec2 position = m_graphics->ScreenToWorld(m_input->GetMousePosition());
+		glm::vec2 velocity = randomUnitCircle() * randomf(0.1f, 5.0f);
+		auto body = new Body(new CircleShape(randomf(0.05f, 0.1f), { randomf(), randomf(), randomf(), 1 }), position, velocity);
 		body->damping = 1;
+		body->gravityScale = 0;
 		m_world->AddBody(body);
 	}
 }
