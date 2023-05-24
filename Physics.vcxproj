@@ -25,6 +25,7 @@
     <ClCompile Include="Source\Engine\Time.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Physics\Body.cpp" />
+    <ClCompile Include="Source\Physics\Collision\Collision.cpp" />
     <ClCompile Include="Source\Physics\Constraints\Joint.cpp" />
     <ClCompile Include="Source\Physics\Forces\AreaForce.cpp" />
     <ClCompile Include="Source\Physics\Forces\DragForce.cpp" />
@@ -33,6 +34,7 @@
     <ClCompile Include="Source\Physics\Forces\PointForce.cpp" />
     <ClCompile Include="Source\Physics\Shapes\CircleShape.cpp" />
     <ClCompile Include="Source\Physics\World.cpp" />
+    <ClCompile Include="Source\Tests\CollisionTest.cpp" />
     <ClCompile Include="Source\Tests\ForceTest.cpp" />
     <ClCompile Include="Source\Tests\JointTest.cpp" />
     <ClCompile Include="Source\Tests\ParticleTest.cpp" />
@@ -45,6 +47,8 @@
     <ClInclude Include="Source\Engine\Random.h" />
     <ClInclude Include="Source\Engine\Time.h" />
     <ClInclude Include="Source\Physics\Body.h" />
+    <ClInclude Include="Source\Physics\Collision\Collision.h" />
+    <ClInclude Include="Source\Physics\Collision\Contact.h" />
     <ClInclude Include="Source\Physics\Constraints\Joint.h" />
     <ClInclude Include="Source\Physics\Forces\AreaForce.h" />
     <ClInclude Include="Source\Physics\Forces\DragForce.h" />
@@ -55,6 +59,7 @@
     <ClInclude Include="Source\Physics\Shapes\CircleShape.h" />
     <ClInclude Include="Source\Physics\Shapes\Shape.h" />
     <ClInclude Include="Source\Physics\World.h" />
+    <ClInclude Include="Source\Tests\CollisionTest.h" />
     <ClInclude Include="Source\Tests\ForceTest.h" />
     <ClInclude Include="Source\Tests\JointTest.h" />
     <ClInclude Include="Source\Tests\ParticleTest.h" />

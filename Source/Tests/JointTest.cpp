@@ -3,7 +3,7 @@
 #include "../Physics/Shapes/CircleShape.h"
 #include "../Physics/Constraints/Joint.h"
 
-#define CHAIN
+//#define CHAIN
 
 #define SPRING_STIFFNESS	100
 #define SPRING_LENGTH		2
@@ -39,13 +39,11 @@ void JointTest::Initialize()
 
 	for (int i = 0; i < CHAIN_SIZE; i++)
 	{
-		auto bodyA = new Body(new CircleShape(20, { 1, 1, 1, 1 }), { 350, 200 }, { 0, 0 }, 1, Body::DYNAMIC);
-		bodyA->gravityScale = 150;
+		auto bodyA = new Body(new CircleShape(0.5f, { 1, 1, 1, 1 }), { -1, 0 }, { 0, 0 }, 1, Body::DYNAMIC);
 		bodyA->damping = BODY_DAMPING;
 		m_world->AddBody(bodyA);
 
-		auto bodyB = new Body(new CircleShape(20, { 1, 1, 1, 1 }), { 450, 200 }, { 0, 0 }, 1, Body::DYNAMIC);
-		bodyB->gravityScale = 150;
+		auto bodyB = new Body(new CircleShape(0.5f, { 1, 1, 1, 1 }), { 1, 0 }, { 0, 0 }, 1, Body::DYNAMIC);
 		bodyB->damping = BODY_DAMPING;
 		m_world->AddBody(bodyB);
 
