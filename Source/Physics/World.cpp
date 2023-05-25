@@ -32,6 +32,7 @@ void World::Step(float dt)
 	std::vector<Contact> contacts;
 	Collision::CreateContacts(bodies, contacts);
 	Collision::SeparateContacts(contacts);
+	Collision::ResolveContacts(contacts);
 }
 
 void World::Draw(Graphics* graphics)
