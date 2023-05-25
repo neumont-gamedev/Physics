@@ -9,15 +9,19 @@ void CollisionTest::Initialize()
 	m_user = new Body(new CircleShape(1, { 0, 0, 1, 1 }), { 0, 0 }, { 0, 0 }, 1, Body::KINEMATIC);
 	m_world->AddBody(m_user);
 
-	auto body = new Body(new CircleShape(200, glm::vec4{ 1.0f }), { 0, -207.5 }, {0, 0}, 1, Body::STATIC);
+	glm::vec2 extents = m_graphics->GetWorldExtents();
+
+	auto body = new Body(new CircleShape(200, glm::vec4{ 1.0f }), { 0, -(200 + extents.y) }, {0, 0}, 1, Body::STATIC);
+	body->restitution = 0;
 	m_world->AddBody(body);
 
-	body = new Body(new CircleShape(200, glm::vec4{ 1.0f }), { -207.5, 0.0 }, { 0, 0 }, 1, Body::STATIC);
+	body = new Body(new CircleShape(200, glm::vec4{ 1.0f }), { 200 + extents.x, 0.0 }, {0, 0}, 1, Body::STATIC);
+	body->restitution = 0;
 	m_world->AddBody(body);
 
-	body = new Body(new CircleShape(200, glm::vec4{ 1.0f }), {  207.5, 0.0 }, { 0, 0 }, 1, Body::STATIC);
+	body = new Body(new CircleShape(200, glm::vec4{ 1.0f }), { -(200 + extents.x), 0.0 }, { 0, 0 }, 1, Body::STATIC);
+	body->restitution = 0;
 	m_world->AddBody(body);
-
 }
 
 void CollisionTest::Update()
@@ -50,4 +54,5 @@ void CollisionTest::FixedUpdate()
 void CollisionTest::Render()
 {
 	m_world->Draw(m_graphics);
+	m_graphics->DrawLine(m_graphics->WorldToScreen(m_user->position), m_graphics->WorldToScreen(m_user->position + m_user->velocity), { 1, 1, 1, 1 });
 }
