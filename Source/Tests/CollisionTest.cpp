@@ -9,8 +9,15 @@ void CollisionTest::Initialize()
 	m_user = new Body(new CircleShape(1, { 0, 0, 1, 1 }), { 0, 0 }, { 0, 0 }, 1, Body::KINEMATIC);
 	m_world->AddBody(m_user);
 
-	//auto body = new Body(new CircleShape(200, glm::vec4{ 1.0f }), { 0, -207.5 }, {0, 0}, 1, Body::STATIC);
-	//m_world->AddBody(body);
+	auto body = new Body(new CircleShape(200, glm::vec4{ 1.0f }), { 0, -207.5 }, {0, 0}, 1, Body::STATIC);
+	m_world->AddBody(body);
+
+	body = new Body(new CircleShape(200, glm::vec4{ 1.0f }), { -207.5, 0.0 }, { 0, 0 }, 1, Body::STATIC);
+	m_world->AddBody(body);
+
+	body = new Body(new CircleShape(200, glm::vec4{ 1.0f }), {  207.5, 0.0 }, { 0, 0 }, 1, Body::STATIC);
+	m_world->AddBody(body);
+
 }
 
 void CollisionTest::Update()
@@ -23,12 +30,13 @@ void CollisionTest::Update()
 
 	if (m_input->GetMouseButton(0))
 	{
-		glm::vec2 velocity = { 0, 0 };// randomUnitCircle()* randomf(1, 3);
-		float size = randomf(0.1f, 0.2f);
+		glm::vec2 velocity = randomUnitCircle()* randomf(0.2f, 1.0f);
+		float size = randomf(0.1f, 0.8f);
 		
 		auto body = new Body(new CircleShape(size, { randomf(), randomf(), randomf(), 1}), position, velocity, size);
-		body->damping = 0;
-		body->gravityScale = 0;
+		body->damping = 0.4f;
+		body->gravityScale = 1;
+		body->restitution = 1;
 
 		m_world->AddBody(body);
 	}
